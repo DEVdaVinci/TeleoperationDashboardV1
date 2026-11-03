@@ -1,0 +1,26 @@
+# Local configuration
+.env
+.env.*
+!.env.example
+
+# Python and Django development data
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+db.sqlite3
+db.sqlite3-*
+.pytest_cache/
+
+# Frontend dependencies and build output
+node_modules/
+dist/
+*.tsbuildinfo
+
+# Local media and licensed models
+teleop_backend_v1/assets/
+teleop_backend_v1/recordings/
+
+# Operating system files
+.DS_Store
+Thumbs.db

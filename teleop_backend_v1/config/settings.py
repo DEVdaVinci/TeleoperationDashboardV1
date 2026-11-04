@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-*cj%v0g5y9i-e-yeaw%2a=aa5+^dl(1+x)@=9x*9w4srl%yzvd
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost', '127.0.0.1']
 
 FRONTEND_URL = "http://" + os.environ["FRONTEND_HOST"] + ":" + os.environ["FRONTEND_PORT_NUMBER"]
 CORS_ALLOWED_ORIGINS = [
@@ -42,13 +42,16 @@ CORS_ALLOW_CREDENTIALS = True
 # Application definition
 
 INSTALLED_APPS = [
+    'daphne',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'teleoperation',
+    'signaling',
+    'pipeline',
+    'telemetry',
     'corsheaders',
     'rest_framework',
 ]
@@ -83,6 +86,13 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'config.wsgi.application'
 
+ASGI_APPLICATION = "config.asgi.application"
+
+CHANNEL_LAYERS = {
+    "default": {
+        "BACKEND": "channels.layers.InMemoryChannelLayer",
+    },
+}
 
 # Database
 # https://docs.djangoproject.com/en/6.1/ref/settings/#databases

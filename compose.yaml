@@ -11,6 +11,16 @@ services:
     env_file:
       - ./teleop_backend_v1/.env
 
+  robot:
+    build: ./teleop_robot_v1
+    init: true
+    volumes:
+      - ./teleop_robot_v1:/app
+    env_file:
+      - ./teleop_robot_v1/.env
+    depends_on:
+      - backend
+
   frontend:
     image: node:26-slim
     init: true
